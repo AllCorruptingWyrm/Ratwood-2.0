@@ -1,5 +1,5 @@
 /obj/item/heart_canister
-	name = "alchemical canister"
+	name = "Heart canister"
 	desc = ""
 	icon = 'icons/obj/structures/heart_items.dmi'
 	icon_state = "canister_empty"

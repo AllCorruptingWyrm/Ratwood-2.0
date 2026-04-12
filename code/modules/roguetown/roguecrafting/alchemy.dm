@@ -148,6 +148,14 @@
 	craftdiff = 1
 	verbage_simple = "forge"
 
+/datum/crafting_recipe/roguetown/alchemy/heartcanister
+	name = "heartblood canister"
+	category = "Containers"
+	result = list(/obj/item/heart_canister)
+	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /obj/item/natural/clay = 1)
+	craftdiff = 5 // we dont want to put the smith out of business now do we
+	verbage_simple = "forge"
+
 /// transmutation
 
 /datum/crafting_recipe/roguetown/alchemy/distill
