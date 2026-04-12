@@ -587,6 +587,6 @@
 /datum/anvil_recipe/tools/aspect_canisters
 	name = "Aspect canisters"
 	req_bar = /obj/item/ingot/copper
-	created_item = /obj/item/heart_canister
+	created_item = /obj/item/aspect_canister
 	craftdiff = SKILL_LEVEL_APPRENTICE
 	createditem_num = 3
