@@ -34,8 +34,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	required = TRUE
 	cmode_music = 'sound/music/combat_noble.ogg'
 	social_rank = SOCIAL_RANK_ROYAL
-	// Can't use the Throat when you can't talk properly or.. at all for that matter.
-	vice_restrictions = list(/datum/charflaw/mute, /datum/charflaw/unintelligible)
+	// Can't use the Throat when you can't talk properly or.. at all for that matter. Also annointed by Astrata, big deal there.
+	vice_restrictions = list(/datum/charflaw/mute, /datum/charflaw/unintelligible, /datum/charflaw/silverweakness)
 
 	job_subclasses = list(
 		/datum/advclass/lord/warrior,
