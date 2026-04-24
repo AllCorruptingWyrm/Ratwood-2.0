@@ -32,7 +32,7 @@
 	desc = "Toss forth an unholy snare of blood and guts a short distance, summoned from your leftover trophies sacrificed to Graggar. Like a net, may it snare your target!"
 	clothes_req = FALSE
 	overlay_state = "unholy_grasp"
-	range = 3													//It's a net, so low range.
+	range = 2													//It's a net, so low range.
 	req_inhand = /obj/item/alch/viscera							//Need to have viscera inhand to cast this.
 	associated_skill = /datum/skill/magic/holy
 	projectile_type = /obj/projectile/magic/unholy_grasp
@@ -41,12 +41,12 @@
 	chargedrain = 0
 	chargetime = 15
 	recharge_time = 10 SECONDS
+	devotion_cost = 70
 
 /obj/projectile/magic/unholy_grasp
 	name = "viceral organ net"
 	icon_state = "tentacle_end"
 	nodamage = TRUE
-	knockdown = 3 SECONDS
 
 /obj/projectile/magic/unholy_grasp/on_hit(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
