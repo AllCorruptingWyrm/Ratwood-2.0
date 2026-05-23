@@ -258,6 +258,12 @@
 		if((HAS_TRAIT(src, TRAIT_OUTLANDER) && !HAS_TRAIT(user, TRAIT_OUTLANDER)) || (HAS_TRAIT(user, TRAIT_RACISMISBAD) && !(src.dna.species.name == "Elf" || src.dna.species.name == "Dark Elf" || src.dna.species.name == "Half Elf")))
 			. += span_phobia("A foreigner...")
 
+		if(HAS_TRAIT(src, TRAIT_SPIRENATIVE) && HAS_TRAIT(user, TRAIT_INQUISITION)) // if the target is a spire native and the observer is inquisition, it says this in chat
+			. += span_phobia("Vile trinity worshipping fool, there is only Psydon! No other!")
+
+		if(HAS_TRAIT(src, TRAIT_INQUISITION) && HAS_TRAIT(user, TRAIT_SPIRENATIVE)) // if the target is a spire native and the observer is inquisition, it says this in chat
+			. += span_phobia("An Otavan... I need to be careful.")
+
 		if(HAS_TRAIT(src, TRAIT_DISGRACED_NOBLE))
 			if(HAS_TRAIT(user, TRAIT_NOBLE))
 				. += span_phobia("A disgraced member of the nobility...")
