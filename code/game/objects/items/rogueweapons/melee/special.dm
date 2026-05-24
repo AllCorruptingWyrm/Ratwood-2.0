@@ -745,6 +745,25 @@
 	var/last_repair
 	var/secondary_tag = FALSE//Does this have two flag states?
 
+// Brass Captain Standard. It gives no buffs, its literal commissar style larp
+// No buffs, sorry!
+/obj/item/rogueweapon/spear/trinity_standard
+	name = "psydonic trinity standard"
+	desc = "The banner of faith depicting the trinity that every spire resident worships. It has no power. \
+	Standards are issued to Brass Captains to rally the men and instill great courage into them. \
+	<small>No runes glow at the head of the spike.</small>"
+	force = 12//Use this in TWO HANDS.
+	force_wielded = 34//+4. +1 from boar spear.
+	throwforce = 32//It'll be funny. Trust.
+	possible_item_intents = list(SPEAR_BASH)
+	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/bash/ranged, /datum/intent/mace/smash/eaglebeak)//GET THEM OFF OF ME!!! OOOUGH!!!
+	icon = 'icons/roguetown/weapons/polearms64.dmi'
+	icon_state = "standard_old"
+	max_blade_int = 260
+	max_integrity = 300//+50 from base. Because blacksteel or something.
+	smeltresult = /obj/item/ingot/blacksteel
+	resistance_flags = FIRE_PROOF
+
 //This is an eagle's beak greataxe combination, basically, with some quirks.
 //Will actual poleaxes function like this? No. But it's a unique fluff weapon right now.
 //At least, when I make them into their own weapon class.

@@ -259,10 +259,10 @@
 			. += span_phobia("A foreigner...")
 
 		if(HAS_TRAIT(src, TRAIT_SPIRENATIVE) && HAS_TRAIT(user, TRAIT_INQUISITION)) // if the target is a spire native and the observer is inquisition, it says this in chat
-			. += span_phobia("Vile trinity worshipping fool, there is only Psydon! No other!")
+			. += span_phobia("Vile apocalyptic fool! There is only PSYDON! No other!")
 
-		if(HAS_TRAIT(src, TRAIT_INQUISITION) && HAS_TRAIT(user, TRAIT_SPIRENATIVE)) // if the target is a spire native and the observer is inquisition, it says this in chat
-			. += span_phobia("An Otavan... I need to be careful.")
+		if(HAS_TRAIT(src, TRAIT_INQUISITION) && HAS_TRAIT(user, TRAIT_SPIRENATIVE)) // if the target is an inquisition member and the observer is spire native, it says this in chat
+			. += span_phobia("An Otavan... I must be careful.") // haha, you thought I'd make a merc company to aid the Inquisition? WRONG!
 
 		if(HAS_TRAIT(src, TRAIT_DISGRACED_NOBLE))
 			if(HAS_TRAIT(user, TRAIT_NOBLE))
