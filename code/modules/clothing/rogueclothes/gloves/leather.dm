@@ -95,6 +95,10 @@
 	salvage_result = /obj/item/natural/hide/cured
 	allowed_race = ALL_RACES_TYPES
 
+/obj/item/clothing/gloves/roguetown/otavan/psygloves/spiregloves
+	name = "Rustlander Leather Gloves"
+	desc = "Fine leather gloves made by a craftsman native to the Rustlands. Stitched and shined to guard HIS warriors who fight at the side of The Lady."
+
 // Eastern gloves
 /obj/item/clothing/gloves/roguetown/eastgloves1
 	name = "black gloves"

@@ -410,6 +410,12 @@
 	icon_state = "psydonmask"
 	item_state = "psydonmask"
 
+/obj/item/clothing/mask/rogue/facemask/psydonmask/spire // needs a sprite change
+	name = "Psydonic trinity mask"
+	desc = "An icon of faith! The mask depicts the Lady of Mirrors, Ianoda, and PSYDON wrapped together in vines. The mask depicts the trinity that Spire residents worship daily. It is made of silver and brass."
+	icon_state = "psydonmask"
+	item_state = "psydonmask"
+
 /*
 /obj/item/clothing/mask/rogue/facemask/prisoner
 	name = "cursed mask"

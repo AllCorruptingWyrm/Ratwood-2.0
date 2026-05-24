@@ -98,6 +98,12 @@
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 
+/obj/item/clothing/shoes/roguetown/boots/psydonboots/spireboots
+	name = "rustlander boots"
+	desc = "Reinforced boots made out of a mixture of brass and blacksteel. These are marching boots to maintains one PURITY."
+	icon_state = "psydonboots"
+	item_state = "psydonboots"
+
 /obj/item/clothing/shoes/roguetown/boots/nobleboot
 	name = "noble boots"
 	//dropshrink = 0.75

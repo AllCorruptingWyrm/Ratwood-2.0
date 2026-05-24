@@ -1,27 +1,32 @@
-// Rustlanders; They are native to one of the three Pyrgoi. 
-// The Order of Brass fields five classes, the Rifleman, the iconic Brass Knight, the Sapper, and the ever elusive Mirror Mage
-//They have extensive background requirements being both of a psydonite faith & being restricted to aasimar, dwarves, and aelves.
-//Psydonites should rightfully fear them over concerns of the Rust Plague spreading through them & faith differences.
-/datum/advclass/mercenary/oathmarked
+// Rustlanders; They are native to one of the three Pyrgoi super positioned across the world.
+// At the bottom of the Order of Brass, there are the Brass Riflemen who can be any species. They are levymen
+// Above them are the iconic Brass Knights and the Mirror Lord, who carries a gun and offers supportive buffs.alist
+// The Brass Company as they are called, are supported by a Mage who is from the western Pyrogoi home to hemophages and rumors of Vampyres.
+// Given Brass Riflemen are literal canon fodder, they can be any race. The others though, no.
+// Psydonites should rightfully fear them over concerns of the Rust Plague spreading through them & faith differences.
+// All have names like "Blessed-Blade-of-Light" or "Carrier-of-Burdens" based off of duties performed or their personality.
+
+/datum/advclass/mercenary/brassrifleman
 	name = "Brass Rifleman"
-	tutorial = "At arms Rifleman! You are a member of the Holy Order of Brass. Having earned your deed name, you were sent out on an expedition to learn about the land now that the Rust Plague has revealed. The home which you had known as either Dytikos Pyrgos, Kentrikos Pyrgos, Anatolikos Pyrgos is but a fleeting memory for you..."
+	tutorial = "At arms, Rifleman! You have been conscript on your 20th summer to fight in the defense and reclamation of either Pyrgos Dytikos, Kentrikos, or Anatolikos. After a successful tenure, you were later assigned abroad as a member of the illusive 'Brass Company' where you are tasked with understanding this new land in the name of The Lady and Ianoda, the former rulers of your homeland who vanished one fateful day..."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/aasimar,
 		/datum/species/elf/wood,
 		/datum/species/dwarf,
-	) // only species that primarily native to the spires
-	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD) // Beware those who are old in a field where most die young.
-	outfit = /datum/outfit/job/roguetown/mercenary/oathmarked
+	) // No humens despite being of Psydon. Humens are viewed as rats by the "higher" people of the spires
+	allowed_ages = list(AGE_ADULT) // Levy men, generally 20-25 at most. Maybe older. They have mandatory service of 18yrs
+	outfit = /datum/outfit/job/roguetown/mercenary/brassrifleman
+	allowed_patrons = list(/datum/patron/old_god)
 	class_select_category = CLASS_CAT_RACIAL
 	category_tags = list(CTAG_MERCENARY)
-	traits_applied = list(TRAIT_SPIRENATIVE, TRAIT_MEDIUMARMOR, TRAIT_PERFECT_TRACKER, TRAIT_SILVER_BLESSED) // they are trackers & bathed in silver for purification, think undead hunters
+	traits_applied = list(TRAIT_SPIRENATIVE, TRAIT_MEDIUMARMOR, TRAIT_PERFECT_TRACKER) // they are trackers. They don't get silver blessings
 	cmode_music = 'sound/music/cmode/nobility/combat_courtmage.ogg'
 	subclass_stats = list(
 		STATKEY_PER = 4,
 		STATKEY_WIL = 3,
 		STATKEY_CON = 2, // Enduring little buggers. They are meant to hold the line and fire from afar.
-		STATKEY_SPD = -2// Maintain your positioning, or suffer. Also technically -3 spd cus middle aged.
+		STATKEY_SPD = -3// Maintain your positioning, or suffer. 
 	)
 	subclass_skills = list(
 		/datum/skill/combat/firearms = SKILL_LEVEL_MASTER, // this might fuck
@@ -33,25 +38,26 @@
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/sneaking = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMANM
+		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMANM,
 	)
-	extra_context = "This subclass is limited to: Aasimar, Dwarves, and Elves. Middle aged and old characters, and psydonites.
+	extra_context = "This subclass is limited to: Psydonites, Adults, Dwarves, Aasimar, and Aelves"
 	subclass_stashed_items = list(//Sure, why not.
 		"Writ of Service" = /obj/item/merctoken
 	)
 
-/datum/outfit/job/roguetown/mercenary/oathmarked/pre_equip(mob/living/carbon/human/H) // I hope you like that hauberk lmfao
+/datum/outfit/job/roguetown/mercenary/brassrifleman/pre_equip(mob/living/carbon/human/H) // I hope you like that hauberk lmfao
 	..()
 	belt = /obj/item/storage/belt/rogue/leather/steel
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	beltr = /obj/item/rogueweapon/scabbard/sword // for your gladius!
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	cloak = /obj/item/storage/backpack/rogue/satchel/beltpack // all happy and snug
-	head = /obj/item/clothing/neck/roguetown/chaincoif/full
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/confessor
+	head = /obj/item/clothing/head/roguetown/helmet/kettle // sovlful
+	mask = /obj/item/clothing/mask/rogue/facemask/psydonmask/spire  // needs a resprite
+	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-	gloves = /obj/item/clothing/gloves/roguetown/otavan/psygloves
+	gloves = /obj/item/clothing/gloves/roguetown/otavan/psygloves/spiregloves // needs a resprite
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
-	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan // needs its own item & resprite
+	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan/spirepants // needs its own item & resprite
 	shoes = /obj/item/clothing/shoes/roguetown/boots/psydonboots // new sprites eventually
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	id = /obj/item/clothing/neck/roguetown/psicross/silver
@@ -63,56 +69,77 @@
 		/obj/item/rogueweapon/huntingknife/idagger/steel = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1,
 		/obj/item/powderflask = 1,
-		/obj/item/quiver/bullet/lead = 1,
+		/obj/item/quiver/bullet/lead = 1, // maybe they can get silver bullets one dae.
+ 		/obj/item/storage/belt/rogue/pouch/coins/mid = 1,
 		)
-	H.merctype = 16
-	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+	r_hand = /obj/item/rogueweapon/sword/short/gladius
+	H.merctype = 17
 
-/datum/advclass/mercenary/oathmarked/executor
+/datum/advclass/mercenary/brassknight
 	name = "Brass Knight"
-	tutorial = "Arise child of the Allfather! You are the sword of the Lady Who Lives In Mirrors. Carry with you retribution in your wake. Issued a unique set of artificer armor and melds to power it, you offer your sword to other members of the Brass Company."
-	outfit = /datum/outfit/job/roguetown/mercenary/oathmarked/executor
+	tutorial = "Arise, child of the Allfather! You were born to a nurse mother who had raised you to be a stalwart protector of the Psydonic Trinity! After your twenty-first birthdae, you were selected to head abroad as part of the illusive "Brass Company" to offer your services as a sellsword, an opportunity that has allowed you to learn much about your future enemies for when the time comes to cleanse the carcus that is Psydonia of those who dare to pollute its PURITY."
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = list(
+		/datum/species/aasimar,
+		/datum/species/elf/wood,
+		/datum/species/dwarf,
+	) // No humens despite being of Psydon. Humens are viewed as rats by the "higher" people of the spires
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD) // Middle aged men or women. I just love hags tbh.
+	outfit = /datum/outfit/job/roguetown/mercenary/brassknight
+	allowed_patrons = list(/datum/patron/old_god)
+	class_select_category = CLASS_CAT_RACIAL
+	category_tags = list(CTAG_MERCENARY)
+	traits_applied = list(TRAIT_SPIRENATIVE, TRAIT_MEDIUMARMOR, TRAIT_SILVER_BLESSED) // They  are bathed in silver.
+	cmode_music = 'sound/music/cmode/nobility/combat_courtmage.ogg'
 	subclass_stats = list(
+		STATKEY_CON = 3
 		STATKEY_STR = 2
-		STATKEY_CON = 2 
 		STATKEY_WIL = 2
-		STATKEY_PER = 2,
-		STATKEY_SPD = -2
+		STATKEY_PER = 2
+		STATKEY_SPD = -2 // -3 spd. Lol
 	)
 	subclass_skills = list(
 		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/tracking = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,//Imperial is not your mother tongue.
+		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
 	)
-
-/datum/outfit/job/roguetown/mercenary/oathmarked/executor/pre_equip(mob/living/carbon/human/H)
+	extra_context = "This subclass is limited to: Psydonites, Middle Aged and Old, Dwarves, Aasimar, and Aelves"
+	subclass_stashed_items = list(//Sure, why not.
+		"Writ of Service" = /obj/item/merctoken
+	)
+/datum/outfit/job/roguetown/mercenary/brassknight/pre_equip(mob/living/carbon/human/H) // one gimmick item: the armor
 	..()
-	r_hand = /obj/item/rogueweapon/greatsword/grenz/oathmarked//A greatsword with peel. Bridges the gap between an estoc and standard zwei.
 	belt = /obj/item/storage/belt/rogue/leather/steel
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	beltr = /obj/item/rogueweapon/scabbard/sword // for your gladius!
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/oathmarked
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/full/oathmarked
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-	gloves = /obj/item/clothing/gloves/roguetown/plate/oathmarked
+	cloak = /obj/item/storage/backpack/rogue/satchel/beltpack // all happy and snug
+	head = /obj/item/clothing/head/roguetown/helmet/heavy // spartan larp
+	mask = /obj/item/clothing/mask/rogue/facemask/psydonmask/spire  // needs a resprite
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/paalloy/artificer // this is their gimmick. yes.
+	shirt =  /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+	gloves = /obj/item/clothing/gloves/roguetown/otavan/psygloves/spiregloves // needs a resprite
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
-	cloak = /obj/item/clothing/cloak/cape/oathmarked
-	pants = /obj/item/clothing/under/roguetown/platelegs/oathmarked
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/oathmarked
-	wrists = /obj/item/clothing/neck/roguetown/psicross/silver/astrata/oathmarked
-	id = /obj/item/clothing/ring/oathmarked
-	backl = /obj/item/rogueweapon/scabbard/gwstrap
+	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan/spirepants // needs its own item & resprite
+	shoes = /obj/item/clothing/shoes/roguetown/boots/psydonboots // new sprites eventually
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	id = /obj/item/clothing/neck/roguetown/psicross/silver
+	backl = /obj/item/rogueweapon/shield/buckler // something something hoplite
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(
 		/obj/item/roguekey/mercenary = 1,
+		/obj/item/storage/keyring = 1,
 		/obj/item/rogueweapon/huntingknife/idagger/steel = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1,
-		/obj/item/book/rogue/secret/oathmarked = 1,
+ 		/obj/item/storage/belt/rogue/pouch/coins/mid = 1,
+		/obj/item/magic/melded/t1 = 1, // you get ONE.
 		)
-	H.merctype = 16
+	r_hand = /obj/item/rogueweapon/sword/short/gladius
+	H.merctype = 17
+	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
