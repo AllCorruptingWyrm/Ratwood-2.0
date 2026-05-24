@@ -1352,6 +1352,12 @@
 	smeltresult = /obj/item/ingot/silverblessed
 	is_silver = TRUE
 
+/obj/item/rogueweapon/woodstaff/sojourner/spirestaff // needs its own sprite, one day.
+	name = "sojourner staff"
+	desc = "Fashioned like those found in Otava, it is a bastardization of what once was. \
+	Clearly, it was twisted to contrast that of the Sojourners who serve the Orthodoxy. Let the Naledi look in fear that one day we'll baptize this world in flame. "
+	icon_state = "psystaff"// I need a new sprite one day
+
 /obj/item/rogueweapon/woodstaff/sojourner/ComponentInitialize()
 	AddComponent(\
 		/datum/component/silverbless,\

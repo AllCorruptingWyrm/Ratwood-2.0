@@ -44,6 +44,9 @@
 	extra_context = "This subclass is limited to: Psydonites, Adults, Dwarves, Aasimar, and Aelves"
 	subclass_stashed_items = list(//Sure, why not.
 		"Writ of Service" = /obj/item/merctoken
+	virtue_restrictions = list(
+		/datum/virtue/utility/riding // I think I did this right
+	)
 	)
 
 /datum/outfit/job/roguetown/mercenary/brassrifleman/pre_equip(mob/living/carbon/human/H) // I hope you like that hauberk lmfao
@@ -157,7 +160,7 @@
 		/datum/species/dwarf,
 	) // No humens despite being of Psydon. Humens are viewed as rats by the "higher" people of the spires
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD) // I LOVE OLDER WOMEN
-	outfit = /datum/outfit/job/roguetown/mercenary/brassrifleman
+	outfit = /datum/outfit/job/roguetown/mercenary/brasscaptain
 	allowed_patrons = list(/datum/patron/old_god)
 	class_select_category = CLASS_CAT_RACIAL
 	category_tags = list(CTAG_MERCENARY)
@@ -173,39 +176,40 @@
 		STATKEY_STR = -2// good luck lmfao
 	)
 	subclass_skills = list(
-		/datum/skill/combat/firearms = SKILL_LEVEL_MASTER, // this might fuck
-		/datum/skill/misc/tracking = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/firearms = SKILL_LEVEL_EXPERT, // Not master, they get a pistol
+		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/sneaking = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMANM,
+		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
 	)
-	extra_context = "This subclass is limited to: Psydonites, Adults, Dwarves, Aasimar, and Aelves"
+	extra_context = "This subclass is limited to: Psydonites, Middle aged & Old, and women only."
 	subclass_stashed_items = list(//Sure, why not.
 		"Writ of Service" = /obj/item/merctoken
+	virtue_restrictions = list(
+		/datum/virtue/utility/riding // I think I did this right
+	)
 	)
 
-/datum/outfit/job/roguetown/mercenary/brassrifleman/pre_equip(mob/living/carbon/human/H) // I hope you like that hauberk lmfao
+/datum/outfit/job/roguetown/mercenary/brasscaptain/pre_equip(mob/living/carbon/human/H) // I hope you like that hauberk lmfao
 	..()
 	belt = /obj/item/storage/belt/rogue/leather/steel
 	beltr = /obj/item/rogueweapon/scabbard/sword // for your gladius!
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	cloak = /obj/item/storage/backpack/rogue/satchel/beltpack // all happy and snug
-	head = /obj/item/clothing/head/roguetown/helmet/kettle // sovlful
+	cloak = /obj/item/clothing/cloak/cotehardie // added larp
 	mask = /obj/item/clothing/mask/rogue/facemask/psydonmask/spire  // needs a resprite
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord // might be silly who knows
 	gloves = /obj/item/clothing/gloves/roguetown/otavan/psygloves/spiregloves // needs a resprite
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan/spirepants // needs its own item & resprite
 	shoes = /obj/item/clothing/shoes/roguetown/boots/psydonboots // new sprites eventually
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	id = /obj/item/clothing/neck/roguetown/psicross/silver
-	backl = /obj/item/gun/ballistic/firearm/handgonne // bro has a gat, what the fuck
+	backl = /obj/item/gun/ballistic/firearm/arquebus_pistol  // for the larp
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(
 		/obj/item/roguekey/mercenary = 1,
@@ -217,4 +221,110 @@
  		/obj/item/storage/belt/rogue/pouch/coins/mid = 1,
 		)
 	r_hand = /obj/item/rogueweapon/sword/short/gladius
+	l_hand = /obj/item/rogueweapon/spear/trinity_standard // CARRY IT WITH PRIDE, PSYDONITE
+
+	var/datum/devotion/C = new /datum/devotion(H, H.patron)
+	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MAJOR, start_maxed = TRUE)	//Starts off maxed out.
+	if(H.mind)
+		H.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/lesser_heal)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/regression)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/convergence)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stasis) // basically Vizier without bolt and guidance. You got a gat. You'll be fine
+	H.merctype = 17
+
+// 
+
+/datum/advclass/mercenary/mirrormage
+	name = "Mirror Mage"
+	tutorial = "Born in Pyrgos Dytikos, you were placed under the care of several Nurse Mothers to be a wielder of arcyne sciences beyond imagining. After graduating from your studies, you were conscripted from the uppermost floors to the Brass Company where you serve as a messenger for the men."
+	allowed_sexes = list(FEMALE) // w-women?! Yes, they are very matriarchal
+	allowed_races = list(
+		/datum/species/aasimar,
+		/datum/species/elf/wood,
+		/datum/species/dwarf,
+	) // No humens despite being of Psydon. Humens are viewed as rats by the "higher" people of the spires
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD) // Still, older women.
+	outfit = /datum/outfit/job/roguetown/mercenary/mirrormage
+	allowed_patrons = list(/datum/patron/old_god)
+	class_select_category = CLASS_CAT_RACIAL
+	category_tags = list(CTAG_MERCENARY)
+	traits_applied = list(TRAIT_SPIRENATIVE, TRAIT_MAGEARMOR, TRAIT_ARCYNE_T2, TRAIT_ALCHEMY_EXPERT, TRAIT_INTELLECTUAL, TRAIT_STEELHEARTED) // Mirrored with Grenzel Merc
+	cmode_music = 'sound/music/cmode/nobility/combat_courtmage.ogg'
+	/* subclass_languages = list(/datum/language/celestial) */ // Note to self, rustlander language. Its greek, hellenistic greek. Celestial is a placeholder
+	subclass_stats = list(
+		STATKEY_INT = 3,
+		STATKEY_CON = 3,
+		STATKEY_WIL = 2,
+		STATKEY_PER = 2,
+		STATKEY_SPD = -1, // effectively -2 spd
+		STATKEY_STR = -2, // No grappling for you!
+	)
+	subclass_spellpoints = 15
+	subclass_skills = list(
+		/datum/skill/misc/reading = SKILL_LEVEL_EXPERT,
+		/datum/skill/magic/arcane = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/craft/alchemy = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE
+		/datum/skill/craft/engineering = SKILL_LEVEL_APPRENTICE, // MIGHT be too much.
+	)
+	extra_context = "This subclass is limited to: Psydonites, Middle aged & Old, and women only."
+	subclass_stashed_items = list(//Sure, why not.
+		"Writ of Service" = /obj/item/merctoken
+	virtue_restrictions = list(
+		/datum/virtue/utility/riding // I think I did this right
+	)
+	)
+
+/datum/outfit/job/roguetown/mercenary/mirrormage/pre_equip(mob/living/carbon/human/H) // I hope you like that hauberk lmfao
+	..()
+	belt = /obj/item/storage/belt/rogue/leather/steel
+	beltr = /obj/item/rogueweapon/scabbard/sword // for your gladius!
+	beltl = /obj/item/flashlight/flare/torch/lantern
+	cloak = /obj/item/clothing/cloak/cotehardie // added larp
+	mask = /obj/item/clothing/mask/rogue/facemask/psydonmask/spire  // needs a resprite
+	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord // might be silly who knows
+	gloves = /obj/item/clothing/gloves/roguetown/otavan/psygloves/spiregloves // needs a resprite
+	neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
+	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan/spirepants // needs its own item & resprite
+	shoes = /obj/item/clothing/shoes/roguetown/boots/psydonboots // new sprites eventually
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	id = /obj/item/clothing/neck/roguetown/psicross/silver
+	backl = /obj/item/gun/ballistic/firearm/arquebus_pistol  // for the larp
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backpack_contents = list(
+		/obj/item/roguekey/mercenary = 1,
+		/obj/item/storage/keyring = 1,
+		/obj/item/rogueweapon/huntingknife/idagger/steel = 1,
+		/obj/item/rogueweapon/scabbard/sheath = 1,
+ 		/obj/item/storage/belt/rogue/pouch/coins/mid = 1,
+		/obj/item/spellbook_unfinished/pre_arcyne = 1
+		/obj/item/roguegem/amethyst = 1
+		)
+	r_hand = /obj/item/rogueweapon/sword/short/gladius
+	l_hand = /obj/item/rogueweapon/woodstaff/sojourner/spirestaff  //we really need our own sprites one dae.
+
+	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/spitfire)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/arcynebolt)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/repulse)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/conjure_armor)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/message)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mindlink) 
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/counterspell)
+	if(H.age == AGE_OLD) // HAGS HAGS HAGS
+		H.adjust_skillrank_up_to(/datum/skill/magic/arcane, 5, TRUE)
+		H.mind?.adjust_spellpoints(9)
+		ADD_TRAIT(H, TRAIT_ARCYNE_T3, TRAIT_GENERIC)
 	H.merctype = 17
